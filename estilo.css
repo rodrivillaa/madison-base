@@ -1,0 +1,203 @@
+body{
+    background-image: url(https://img.freepik.com/vector-gratis/fondo-realista-rosa-plata_23-2149997090.jpg);
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    border-radius: 5px;
+   
+
+}
+
+input{
+    width: 250px;
+    height: 30px;
+    align-items: center;
+    border-radius: 5px;
+    border: 2px solid rgb(0, 0, 0);
+    background: transparent;
+    text-align: center;
+    color: black;
+}
+.btn{
+    align-items: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: rgba(250, 140, 226, 0.945);
+    cursor: pointer;
+}
+
+.inputs-container{
+    background-color: rgb(255, 255, 255);
+    box-shadow: 10px 2px 53px 5px rgba(218,126,194,0.53);
+-webkit-box-shadow: 10px 2px 53px 5px rgba(218,126,194,0.53);
+-moz-box-shadow: 10px 2px 53px 5px rgba(218,126,194,0.53);
+border: 1px solid rgba(218,126,194,0.53) ;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 500px;
+    padding: 20px;
+    border-radius: 20px;
+
+
+    
+}
+.btn-container{
+    display: flex;
+    justify-content: center;
+}
+
+.ok{
+    background-color: rgb(23, 216, 158);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+    color:rgba(0, 0, 0, 0.993) ;
+    
+}
+h1{
+    text-align: center;
+    color: rgba(228, 58, 177, 0.774);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.btn:hover{
+    background-color:rgba(218,126,194,0.53) ;
+}
+
+.conteiner-datos{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    
+    
+    margin-top: 50px;
+
+
+
+    
+
+}
+h2{
+}
+
+.datos{
+    display: flex;
+    padding: 20px;
+
+    flex-direction: column;
+    text-align: start;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+   
+    background-image: linear-gradient(
+        to bottom right,
+        #ffffff,#ffffff
+    );
+    box-shadow: 8px 4px 17px 7px rgba(207,161,191,0.76);
+-webkit-box-shadow: 8px 4px 17px 7px rgba(207,161,191,0.76);
+-moz-box-shadow: 8px 4px 17px 7px rgba(207,161,191,0.76);
+    width: 600px;
+    border-radius: 10px;
+
+}
+
+.datos p{
+    padding: 15px;
+   
+
+}
+
+p{
+    color: rgb(0, 0, 0);
+    border: 1px solid black;
+
+}
+
+h3{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 50px;
+    font-size: 50px;
+    text-align: center;
+}
+
+.total{
+    text-align: center;
+}
+
+.monto{
+    display: flex;
+    align-items: center;
+    margin-top: 40px;
+    text-align: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.monto button{
+    cursor: pointer;
+    border-radius: 40px;
+    width: 200px;
+    height: 50px;
+    background-color: rgba(218,126,194,0.53);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.monto button:hover{
+    transform: scale(1.1);
+}
+
+.xss{
+    background-color: rgb(223, 21, 172);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(0, 0, 0);
+}
+
+.buscador{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ 
+    gap: 20px;
+    background-image: linear-gradient(
+     to bottom right,
+     #FF6868,#FF68DE
+    );
+}
+
+.bsq{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    align-items: center;
+
+}
+
+.bsq button{
+    cursor: pointer;
+    width: 150px;
+    border-radius: 10PX;
+}
+
+.h1{
+    color: aliceblue;
+}
+
+ul{
+   text-align: center;
+    background-color: aliceblue;
+    border-radius: 3px;
+}
