@@ -103,68 +103,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["calcular"])) {
 
 
 
-<div class="buscador">
 
-
-
-    <script>
-    
-    function limpiarBusqueda() {
-            document.getElementById("busqueda").value = "";
-        }
-    </script>
-    
-    
-    
-        <h1 class="h1">Buscador de Datos</h1>
-            <form action="" method="GET" class="bsq">
-                <label for="busqueda">Buscar por nombre:</label>
-                <input type="text" id="busqueda" name="busqueda">
-                <button type="submit">Buscar</button>
-            </form>
-            
-            <?php
-        // Verificar si se ha enviado una consulta de búsqueda
-        if(isset($_GET['busqueda'])) {
-            // Establecer conexión a la base de datos
-            
-            // Verificar la conexión
-            if ($conex->connect_error) {
-                die("Error de conexión: " . $conex->connect_error);
-            }
-            
-            // Escapar la cadena de búsqueda para prevenir inyección SQL
-            $busqueda = $conex->real_escape_string($_GET['busqueda']);
-            
-            // Consulta SQL para buscar en la tabla "datos" por el nombre
-            $sql = "SELECT * FROM datos WHERE nombre LIKE '%$busqueda%'";
-            
-            // Ejecutar la consulta
-            $resultado = $conex->query($sql);
-            
-            // Mostrar resultados
-            if ($resultado->num_rows > 0) {
-                echo "<h2>Resultados de la búsqueda:</h2>";
-                echo "<ul>";
-                while($fila = $resultado->fetch_assoc()) {
-                    echo "<li>Nombre: {$fila['nombre']} - {$fila['direccion']} - Medidas: {$fila['medidas']} - Monto: $ {$fila['monto']}</li>- gastos: $ {$fila['gastos']}</li>";
-                }
-                echo "</ul>";
-            } else {
-                echo "<p>No se encontraron resultados para '{$_GET['busqueda']}'.</p>";
-            }
-            
-            // Cerrar la conexión
-            $conex->close(); 
-            
-            
-        }
-        
-        
-    
-        ?>
-        </div>
-        <hr>
 
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
     <div  class="monto">
@@ -198,11 +137,160 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["calcular"])) {
         echo "Error al ejecutar la consulta: " . $conex->error;
     }
     // Cerrar conexión
-    $conex->close();
+   /*  $conex->close(); */
 }
     ?>
+
+
+
+<hr>
+
+
+
+
+
+
+
+
+
+<?php
+// Verificar si se ha enviado el formulario
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["total"])) {
+    // Establecer la conexión con la base de datos
+    $mysqli = new mysqli("localhost", "root", "", "madison");
+
+    // Verificar errores de conexión
+    if ($mysqli->connect_error) {
+        die("Error de conexión: " . $mysqli->connect_error);
+    }
+
+    // Consulta para restar la columna de montos y la columna de gastos
+    $query = "SELECT (SUM(monto) - SUM(gastos)) AS total_resultado FROM datos";
+
+    // Ejecutar la consulta
+    $result = $mysqli->query($query);
+
+    // Verificar si la consulta fue exitosa
+    if ($result) {
+        // Obtener el resultado como un array asociativo
+        $row = $result->fetch_assoc();
+
+        // Mostrar el total del resultado de la resta
+        $total_resultado = $row['total_resultado'];
+    } else {
+        // Mostrar un mensaje de error si la consulta falla
+        $total_resultado = "Error al ejecutar la consulta: " . $mysqli->error;
+    }
+
+    // Cerrar la conexión
+    /* $mysqli->close(); */
+}
+?>
+<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+<div  class="monto">
+<button type="submit" name="total">Calcular total</button>
+
+</div>
+</form>
+
+<?php if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["total"])): ?>
+        <h2>Total del resultado de la resta:</h2>
+        <p><?php echo isset($total_resultado) ? "$" . $total_resultado : "No se ha calculado aún"; ?></p>
+    <?php endif; ?>
+
+    <hr>
+   
+    </html>
+
+
+
+
+
+
+
+
+
+    <div class="buscador">
+
+
+
+<script>
+
+function limpiarBusqueda() {
+        document.getElementById("busqueda").value = "";
+    }
+</script>
+
+
+
+    <h1 class="h1">Buscador de Datos</h1>
+        <form action="" method="GET" class="bsq">
+            <label for="busqueda">Buscar por nombre:</label>
+            <input type="text" id="busqueda" name="busqueda">
+            <button type="submit">Buscar</button>
+        </form>
+        
+        <?php
+    // Verificar si se ha enviado una consulta de búsqueda
+    if(isset($_GET['busqueda'])) {
+        // Establecer conexión a la base de datos
+        
+        // Verificar la conexión
+        if ($conex->connect_error) {
+            die("Error de conexión: " . $conex->connect_error);
+        }
+        
+        // Escapar la cadena de búsqueda para prevenir inyección SQL
+        $busqueda = $conex->real_escape_string($_GET['busqueda']);
+        
+        // Consulta SQL para buscar en la tabla "datos" por el nombre
+        $sql = "SELECT * FROM datos WHERE nombre LIKE '%$busqueda%'";
+        
+        // Ejecutar la consulta
+        $resultado = $conex->query($sql);
+        
+        // Mostrar resultados
+        if ($resultado->num_rows > 0) {
+            echo "<h2>Resultados de la búsqueda:</h2>";
+            echo "<ul>";
+            while($fila = $resultado->fetch_assoc()) {
+                echo "<li>Nombre: {$fila['nombre']} - {$fila['direccion']} - Medidas: {$fila['medidas']} - Monto: $ {$fila['monto']}</li>- gastos: $ {$fila['gastos']}</li>";
+            }
+            echo "</ul>";
+        } else {
+            echo "<p>No se encontraron resultados para '{$_GET['busqueda']}'.</p>";
+        }
+        
+        // Cerrar la conexión
+        $conex->close(); 
+        
+        
+    }
+    
+    
+
+    ?>
+    </div>
+
+
+
+
+
+
+
+
 </body>
-</html>
+
+
+
+
+
+
+
+
+
+
+
 
 
 
